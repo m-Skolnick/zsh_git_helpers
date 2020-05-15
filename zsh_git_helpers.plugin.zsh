@@ -2,6 +2,12 @@
 #
 # See README.md for details
 
+alias gcpd='git checkout develop && gl'
+alias gcpm='git checkout master && gl'
+alias github="open https://github.$(git config remote.origin.url | cut -f2 -d.)"
+alias git-assume-unchanged='git update-index --assume-unchanged'
+alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
+
 alias pull_and_merge="_pull_and_merge"
 
 local current_branch_name branch_to_merge
