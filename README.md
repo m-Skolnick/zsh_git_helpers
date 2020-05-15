@@ -6,6 +6,10 @@ Oh-my-zsh plugin which provides helpers for common git commands
 
 ## Installation
 
+Complete instructions for installing a plugin can be found [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Customization#overriding-and-adding-plugins)
+
+Below is what the process normally looks like:
+
 1.  Create folder inside your Oh-My-ZSH directory with custom plugins
 
         cd ~/.oh-my-zsh/custom/plugins/
