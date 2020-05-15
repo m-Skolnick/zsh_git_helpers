@@ -10,7 +10,7 @@ Oh-my-zsh plugin which provides helpers for common git commands
 
         cd ~/.oh-my-zsh/custom/plugins/
 
-2.  Copy plugin files to it
+2.  Copy plugin to folder
 
         git clone https://github.com/m-Skolnick/zsh_git_helpers.git
 
