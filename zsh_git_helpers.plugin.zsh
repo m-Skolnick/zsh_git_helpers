@@ -8,40 +8,28 @@ alias github="open https://github.$(git config remote.origin.url | cut -f2 -d.)"
 alias git-assume-unchanged='git update-index --assume-unchanged'
 alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
 
-alias pull_and_merge="_pull_and_merge"
+alias fetch_and_merge="_fetch_and_merge"
 
-local current_branch_name branch_to_merge
-
-_merge_entered_branch_to_current() {
-    echo "\nChecking out '$current_branch_name'...\n" &&
-        git checkout $current_branch_name &&
-        echo "\nMerging '$branch_to_merge' into '$current_branch_name'...\n" &&
-        git merge $branch_to_merge
+_fetch_and_merge() {
+    _update_entered_branch $1 &&
+        _merge_entered_branch_to_current $1
 }
 
 _update_entered_branch() {
-    echo -e "Checking out '$branch_to_merge'...\n"
+    local branch_to_merge=$1
+    echo -e "Updating '$branch_to_merge'..."
 
     if [ "$branch_to_merge" = "" ]; then
-        echo "Error: Name of branch to merge cannot be empty"
+        echo "\nError: Name of branch to merge cannot be empty"
         return 1
     fi
 
-    git checkout $branch_to_merge &&
-        echo -e "\nPulling '$branch_to_merge'...\n" &&
-        git pull
+    git fetch origin $branch_to_merge:$branch_to_merge
 }
 
-_read_params() {
-    # This line will echo its own error if not currently in git repo
-    current_branch_name=$(git rev-parse --abbrev-ref HEAD)
-
-    # Store command argument to variable
-    branch_to_merge=$1
-}
-
-_pull_and_merge() {
-    _read_params &&
-        _update_entered_branch &&
-        _merge_entered_branch_to_current
+_merge_entered_branch_to_current() {
+    local branch_to_merge=$1
+    local current_branch_name=$(git rev-parse --abbrev-ref HEAD)
+    echo "\nMerging '$branch_to_merge' into '$current_branch_name'...\n" &&
+        git merge $branch_to_merge
 }

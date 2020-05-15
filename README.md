@@ -40,4 +40,4 @@ You will now be able to use the plugin
 
 2.  Run Command
 
-        pull_and_merge <any-branch>
+        fetch_and_merge <any-branch>
