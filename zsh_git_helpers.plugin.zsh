@@ -12,6 +12,7 @@ alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
 
 alias fetch_and_merge="_fetch_and_merge"
 
+#[START] fetch_and_merge <branch-name>
 _fetch_and_merge() {
     _update_entered_branch $1 &&
         _merge_entered_branch_to_current $1
@@ -35,11 +36,12 @@ _merge_entered_branch_to_current() {
     echo "\nMerging '$branch_to_merge' into '$current_branch_name'...\n" &&
         git merge $branch_to_merge
 }
+#[END] fetch_and_merge <branch-name>
 
-# [START git-auto-status gist]
-# Taken from: https://gist.github.com/oshybystyi/475ee7768efc03727f21
+# [START] git-auto-status
+# Copied from: https://gist.github.com/oshybystyi/475ee7768efc03727f21
 #
-# Run git status after specified set of command
+# Runs git status after specified set of command
 #
 # @author Oleksandr Shybystyi oleksandr.shybystyi@gmail.com
 #
@@ -69,4 +71,4 @@ function git() {
         command git status
     fi
 }
-# [END git-auto-status gist]
+# [END] git-auto-status gist
