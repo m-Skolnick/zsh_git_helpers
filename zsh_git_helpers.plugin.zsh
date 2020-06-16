@@ -1,6 +1,8 @@
 # Helpers for common git operations
 #
-# See README.md for details
+# @author Micaiah Skolnick mskolnickdev@gmail.com
+#
+# See README.md for details and instructions
 
 alias gcpd='git checkout develop && gl'
 alias gcpm='git checkout master && gl'
@@ -33,3 +35,38 @@ _merge_entered_branch_to_current() {
     echo "\nMerging '$branch_to_merge' into '$current_branch_name'...\n" &&
         git merge $branch_to_merge
 }
+
+# [START git-auto-status gist]
+# Taken from: https://gist.github.com/oshybystyi/475ee7768efc03727f21
+#
+# Run git status after specified set of command
+#
+# @author Oleksandr Shybystyi oleksandr.shybystyi@gmail.com
+#
+
+# List of git commands `git status` will run after
+gitPreAutoStatusCommands=(
+    'add'
+    'rm'
+    'reset'
+    'commit'
+    'checkout'
+    'mv'
+    'init'
+)
+
+# taken from http://stackoverflow.com/a/8574392/4647743
+function elementInArray() {
+  local e
+  for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+  return 1
+}
+
+function git() {
+    command git $@
+    if (elementInArray $1 $gitPreAutoStatusCommands); then
+        echo "\n git status: \n"
+        command git status
+    fi
+}
+# [END git-auto-status gist]
