@@ -65,7 +65,7 @@ function elementInArray() {
 function git() {
     command git $@
     if (elementInArray $1 $gitPreAutoStatusCommands); then
-        echo "\n git status: \n"
+        echo "\ngit status: \n"
         command git status
     fi
 }
