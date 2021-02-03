@@ -11,7 +11,7 @@ alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
 #[START] gcamp <commit message>
 # commit and push
 gcamp() {
-  git commit -a -m $1 && git push
+  git add --all && git commit -m $1 && git push
 }
 #[END] gcamp <commit message>
 
