@@ -4,16 +4,18 @@
 #
 # See README.md for details and instructions
 
-alias gcpd='git checkout develop && gl'
-alias gcpm='git checkout master && gl'
 alias github="open https://github.$(git config remote.origin.url | cut -f2 -d.)"
 alias git-assume-unchanged='git update-index --assume-unchanged'
 alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
 
-alias fetch_and_merge="_fetch_and_merge"
+#[START] gcamp <commit message>
+# commit and push
+gcamp() {
+  git commit -a -m $1 && git push
+}
 
 #[START] fetch_and_merge <branch-name>
-_fetch_and_merge() {
+fetch_and_merge() {
     _update_entered_branch $1 &&
         _merge_entered_branch_to_current $1
 }
