@@ -13,6 +13,7 @@ alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
 gcamp() {
   git commit -a -m $1 && git push
 }
+#[END] gcamp <commit message>
 
 #[START] fetch_and_merge <branch-name>
 fetch_and_merge() {
@@ -53,7 +54,7 @@ gitPreAutoStatusCommands=(
     'add'
     'rm'
     'reset'
-    'commit'
+    'push'
     'checkout'
     'mv'
     'init'
