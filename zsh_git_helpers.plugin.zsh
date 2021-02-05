@@ -1,12 +1,25 @@
-# Helpers for common git operations
+open https://github.$(git config remote.origin.url | cut -f2 -d.)# Helpers for common git operations
 #
 # @author Micaiah Skolnick mskolnickdev@gmail.com
 #
 # See README.md for details and instructions
 
-alias github="open https://github.$(git config remote.origin.url | cut -f2 -d.)"
 alias git-assume-unchanged='git update-index --assume-unchanged'
 alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
+
+#[START] github 
+# Opens github at current repository URL
+github() {
+  open https://github.$(git config remote.origin.url | cut -f2 -d.)
+}
+#[END] github
+
+$[START] github_branch
+# Opens github at current branch-compare
+github_branch() {
+  local current_branch_name=$(git rev-parse --abbrev-ref HEAD)
+  open https://github.$(git config remote.origin.url | cut -f2 -d.)/compare/$current_branch_name
+}
 
 #[START] gcamp <commit message>
 # commit and push
