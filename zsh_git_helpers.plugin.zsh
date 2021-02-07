@@ -1,4 +1,4 @@
-open https://github.$(git config remote.origin.url | cut -f2 -d.)# Helpers for common git operations
+# Helpers for common git operations
 #
 # @author Micaiah Skolnick mskolnickdev@gmail.com
 #
@@ -14,7 +14,7 @@ github() {
 }
 #[END] github
 
-$[START] github_branch
+#$[START] github_branch
 # Opens github at current branch-compare
 github_branch() {
   local current_branch_name=$(git rev-parse --abbrev-ref HEAD)
