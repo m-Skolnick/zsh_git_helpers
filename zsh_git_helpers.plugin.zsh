@@ -4,6 +4,8 @@
 #
 # See README.md for details and instructions
 
+alias gcpm='git checkout main && git pull'
+alias gcpd='git checkout develop && git pull'
 alias git-assume-unchanged='git update-index --assume-unchanged'
 alias git-no-assume-unchanged='git update-index --no-assume-unchanged'
 
