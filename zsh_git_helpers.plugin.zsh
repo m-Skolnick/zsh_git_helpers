@@ -26,7 +26,7 @@ github_branch() {
 #[START] gcamp <commit message>
 # commit and push
 gcamp() {
-  git add --all && git commit -m $1 && git push
+  git add --all && git commit -m $1 && git push -u
 }
 #[END] gcamp <commit message>
 
